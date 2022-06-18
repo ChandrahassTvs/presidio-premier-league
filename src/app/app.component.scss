@@ -33,10 +33,10 @@ $primaryColor: #811333;
 }
 
 .logo {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   margin: 8px;
-  background-size: 75px;
+  background-size: 50px;
   &.water-tribe {
     background-image: url('../assets/Water.png');
   }
@@ -58,8 +58,11 @@ $primaryColor: #811333;
   align-items: center;
   text-align: center;
   .match {
-    width: 100%;
+    width: 60%;
     margin: 10px 0;
+    background: #d4c0a6;
+    border-radius: 10px;
+    padding: 16px 0;
   }
   .result {
     background-color: $primaryColor;
@@ -67,7 +70,7 @@ $primaryColor: #811333;
   }
 
   .players {
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
