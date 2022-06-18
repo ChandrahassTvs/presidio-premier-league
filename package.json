@@ -1,8 +1,8 @@
 {
-  "name": "ng-google-sheets-db-demo",
+  "name": "presidio-premier-league",
   "version": "1.0.1",
   "author": {
-    "name": "Franz Diebold"
+    "name": "Chandrahass Tvs"
   },
   "dependencies": {
     "@angular/animations": "^10.2.4",
