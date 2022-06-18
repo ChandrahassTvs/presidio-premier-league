@@ -6,11 +6,13 @@ import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { KeyValuePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [
+    KeyValuePipe,
     {
       provide: API_KEY,
       useValue: environment.googleSheetsApiKey,

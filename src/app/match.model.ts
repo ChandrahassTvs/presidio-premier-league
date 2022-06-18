@@ -1,6 +1,7 @@
 export const matchAttributesMapping = {
   id: 'No',
   date: 'Date',
+  status: 'Status',
   game: {
     name: 'Game',
     type: 'Type',
@@ -42,4 +43,5 @@ export interface Match {
     players: string[];
   };
   result: string;
+  status: string;
 }

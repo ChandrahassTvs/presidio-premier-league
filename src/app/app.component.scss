@@ -18,12 +18,12 @@ $primaryColor: #811333;
     .menu-item {
       padding: 10px 16px;
       background-color: transparent;
-      border: 1px solid $primaryColor;
-      color: $primaryColor;
+      color: white;
       display: inline-block;
       margin: 0 8px;
       border-radius: 16px;
       font-weight: 400;
+      cursor: pointer;
       &.active {
         background-color: rgba($primaryColor, 1);
         color: white;
@@ -51,6 +51,11 @@ $primaryColor: #811333;
   }
 }
 
+.date {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
 .matches {
   display: flex;
   flex-direction: column;
@@ -63,9 +68,20 @@ $primaryColor: #811333;
     margin: 10px 0;
     border-radius: 10px;
     padding: 16px 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
+    border-top: 30px solid #0000007a;
+    .game {
+      position: absolute;
+      top: -22px;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+    &:last-child {
+      margin-bottom: 32px;
+    }
   }
   .result {
     background-color: $primaryColor;
@@ -91,6 +107,9 @@ $primaryColor: #811333;
     margin: 0 16px;
     font-size: 16px;
     width: 10%;
+    .won {
+      font-weight: 600;
+    }
   }
 
   .team-one,
@@ -99,6 +118,9 @@ $primaryColor: #811333;
     align-items: center;
     justify-content: flex-end;
     width: 45%;
+    &.out {
+      opacity: 0.3;
+    }
   }
 
   .team-two {

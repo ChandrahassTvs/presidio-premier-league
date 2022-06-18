@@ -4,28 +4,105 @@
       <div class="title">Presidio Premier League</div>
       <div>2022</div>
     </div>
-    <!-- <div class="menu-list">
-      <div class="menu-item active">Today</div>
-      <div class="menu-item">Results</div>
-    </div> -->
-  </div>
-</nav>
-<div class="matches">
-  <div class="match" *ngFor="let match of today">
-    <div class="fixture">
-      <div class="team-one">
-        <div class="players">
-          <div *ngFor="let payer of match.teamOne.players">{{ payer }}</div>
-        </div>
-        <div class="logo fire-nation"></div>
+    <div class="menu-list">
+      <div
+        class="menu-item"
+        [class.active]="currentView == 'fixtures'"
+        (click)="currentView = 'fixtures'"
+      >
+        Fixtures
       </div>
-      <div class="vs">VS</div>
-      <div class="team-two">
-        <div class="logo air-nomad"></div>
-        <div class="players">
-          <div *ngFor="let payer of match.teamTwo.players">{{ payer }}</div>
-        </div>
+      <div
+        class="menu-item"
+        [class.active]="currentView == 'results'"
+        (click)="currentView = 'results'"
+      >
+        Results
+      </div>
+      <div
+        class="menu-item"
+        [class.active]="currentView == 'teams'"
+        (click)="currentView = 'teams'"
+      >
+        Teams
       </div>
     </div>
+  </div>
+</nav>
+<div class="matches" *ngIf="currentView === 'fixtures'">
+  <ng-container *ngFor="let group of fixturesGroupedByDates | keyvalue">
+    <div>
+      <div class="date">{{ group.key }}</div>
+      <ng-container *ngFor="let match of group.value">
+        <div class="match" *ngIf="match.status != 'Completed'">
+          <div class="game">{{ match.game.name }} - {{ match.game.type }}</div>
+          <div class="fixture">
+            <div class="team-one">
+              <div class="players">
+                <div *ngFor="let payer of match.teamOne.players">
+                  {{ payer }}
+                </div>
+              </div>
+              <div class="logo {{ getLogoName(match.teamOne.name) }}"></div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team-two">
+              <div class="logo {{ getLogoName(match.teamTwo.name) }}"></div>
+              <div class="players">
+                <div *ngFor="let payer of match.teamTwo.players">
+                  {{ payer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<div class="matches" *ngIf="currentView === 'results'">
+  <ng-container *ngFor="let group of resultsGroupedByDates | keyvalue">
+    <div>
+      <div class="date">{{ group.key }}</div>
+      <ng-container *ngFor="let match of group.value">
+        <div class="match" *ngIf="match.status == 'Completed'">
+          <div class="game">{{ match.game.name }} - {{ match.game.type }}</div>
+          <div class="fixture">
+            <div
+              class="team-one"
+              [class.out]="match.teamOne.name != match.result"
+            >
+              <div class="players">
+                <div *ngFor="let payer of match.teamOne.players">
+                  {{ payer }}
+                </div>
+              </div>
+              <div class="logo {{ getLogoName(match.teamOne.name) }}"></div>
+            </div>
+            <div class="vs">
+              <span>{{ match.teamOne.score }}</span> -
+              <span>{{ match.teamTwo.score }}</span>
+            </div>
+            <div
+              class="team-two"
+              [class.out]="match.teamTwo.name != match.result"
+            >
+              <div class="logo {{ getLogoName(match.teamTwo.name) }}"></div>
+              <div class="players">
+                <div *ngFor="let payer of match.teamTwo.players">
+                  {{ payer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<div class="teams">
+  <div class="team">
+    <div class="name"></div>
   </div>
 </div>
