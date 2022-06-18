@@ -32,6 +32,15 @@ $primaryColor: #2ca467;
   }
 }
 
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 8px;
+  &.water-tribe {
+    background-image: url('../assets/WaterTribe.png');
+  }
+}
+
 .matches {
   display: flex;
   flex-direction: column;
@@ -41,6 +50,9 @@ $primaryColor: #2ca467;
     width: 75%;
     background-color: #baa388;
     margin: 10px 0;
-    padding: 16px;
+  }
+  .result {
+    background-color: #811333;
+    color: #fff;
   }
 }
