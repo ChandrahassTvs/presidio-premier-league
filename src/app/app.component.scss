@@ -1,4 +1,46 @@
 $primaryColor: #2ca467;
 
 .container {
+  padding: 24px;
+  .title-container {
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align: center;
+    color: #811333;
+    font-weight: bold;
+    margin-bottom: 36px;
+    .title {
+      font-size: 36px;
+    }
+  }
+  .menu-list {
+    display: flex;
+    justify-content: center;
+    .menu-item {
+      padding: 10px 16px;
+      background-color: transparent;
+      border: 1px solid #811333;
+      color: #811333;
+      display: inline-block;
+      margin: 0 8px;
+      border-radius: 16px;
+      font-weight: 400;
+      &.active {
+        background-color: rgba(#660e27, 1);
+        color: #fff;
+      }
+    }
+  }
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+  .match {
+    width: 75%;
+    background-color: #baa388;
+    margin: 10px 0;
+    padding: 16px;
+  }
 }

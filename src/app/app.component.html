@@ -5,8 +5,28 @@
       <div>2022</div>
     </div>
     <div class="menu-list">
-      <div>Today</div>
-      <div>Results</div>
+      <div class="menu-item active">Today</div>
+      <div class="menu-item">Results</div>
     </div>
   </div>
 </nav>
+<div class="matches">
+  <div class="match" *ngFor="let match of today">
+    <div>
+      {{ match.game.name }}
+    </div>
+    <div>
+      {{ match.game.type }}
+    </div>
+    <div>
+      <div>
+        <div *ngFor="let payer of match.teamOne.players">{{ payer }}</div>
+      </div>
+      <div>VS</div>
+      <div>
+        <div *ngFor="let payer of match.teamTwo.players">{{ payer }}</div>
+      </div>
+    </div>
+    {{ match.result }}
+  </div>
+</div>

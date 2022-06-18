@@ -14,6 +14,8 @@ import { Match, matchAttributesMapping } from './match.model';
 })
 export class AppComponent implements OnInit {
   matches$: Observable<Match[]>;
+  today: Match[] = [];
+  completed: Match[] = [];
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService) {}
 
@@ -24,7 +26,9 @@ export class AppComponent implements OnInit {
       matchAttributesMapping
     );
     this.matches$.subscribe((response) => {
-      console.log(response);
+      this.today = response.filter(
+        (match) => match.date === new Date().toLocaleDateString()
+      );
     });
   }
 }
