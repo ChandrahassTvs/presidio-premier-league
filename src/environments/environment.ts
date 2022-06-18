@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   googleSheetsApiKey: 'AIzaSyDU-N2P62-nfvbTpapNKxgHizZ2U5qaSXw',
-  characters: {
+  matches: {
     spreadsheetId: '1RrXH6xxEJtB0luD_EwdCKnlN2Hkn3WpVESbs2AKkEIE',
     worksheetName: 'Sample',
   },
