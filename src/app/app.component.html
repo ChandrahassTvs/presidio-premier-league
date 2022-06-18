@@ -10,29 +10,28 @@
     </div>
   </div>
 </nav>
-<div class="logo fire-nation"></div>
-<div class="logo air-nomad"></div>
-<div class="logo earth-kingdom"></div>
-<div class="logo water-tribe"></div>
-<!-- <div class="matches">
+<div class="matches">
   <div class="match" *ngFor="let match of today">
-    <div>
+    <div class="name">
       {{ match.game.name }}
     </div>
-    <div>
+    <div class="type">
       {{ match.game.type }}
     </div>
-    <div>
-      <div>
-        <div *ngFor="let payer of match.teamOne.players">{{ payer }}</div>
+    <div class="fixture">
+      <div class="team-one">
+        <div class="players">
+          <div *ngFor="let payer of match.teamOne.players">{{ payer }}</div>
+        </div>
+        <div class="logo fire-nation"></div>
       </div>
-      <div>VS</div>
-      <div>
-        <div *ngFor="let payer of match.teamTwo.players">{{ payer }}</div>
+      <div class="vs">VS</div>
+      <div class="team-two">
+        <div class="logo air-nomad"></div>
+        <div class="players">
+          <div *ngFor="let payer of match.teamTwo.players">{{ payer }}</div>
+        </div>
       </div>
-    </div>
-    <div class="result">
-      {{ match.result }}
     </div>
   </div>
-</div> -->
+</div>
