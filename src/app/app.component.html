@@ -46,7 +46,7 @@
           <div class="fixture">
             <div class="team-one">
               <div class="players">
-                <div *ngFor="let payer of match.teamOne.players">
+                <div class="player" *ngFor="let payer of match.teamOne.players">
                   {{ payer }}
                 </div>
               </div>
@@ -56,7 +56,7 @@
             <div class="team-two">
               <div class="logo {{ getLogoName(match.teamTwo.name) }}"></div>
               <div class="players">
-                <div *ngFor="let payer of match.teamTwo.players">
+                <div class="player" *ngFor="let payer of match.teamTwo.players">
                   {{ payer }}
                 </div>
               </div>
@@ -80,7 +80,7 @@
               [class.out]="match.teamOne.name != match.result"
             >
               <div class="players">
-                <div *ngFor="let payer of match.teamOne.players">
+                <div class="player" *ngFor="let payer of match.teamOne.players">
                   {{ payer }}
                 </div>
               </div>
@@ -96,7 +96,7 @@
             >
               <div class="logo {{ getLogoName(match.teamTwo.name) }}"></div>
               <div class="players">
-                <div *ngFor="let payer of match.teamTwo.players">
+                <div class="player" *ngFor="let payer of match.teamTwo.players">
                   {{ payer }}
                 </div>
               </div>
@@ -115,7 +115,25 @@
         <div class="logo-large {{ getLogoName(group.key) }}"></div>
       </div>
       <div class="players">
-        <div class="player" *ngFor="let player of group.value">{{ player.name }}</div>
+        <div class="player" *ngFor="let player of group.value; let i = index">
+          <span class="player-name">
+            <span class="icon" *ngIf="!i">👑</span>
+            {{ player.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="standings" *ngIf="currentView === 'standings'">
+  <ng-container *ngFor="let item of teamScores">
+    <div class="team">
+      <div class="name">
+        <div class="logo-large {{ getLogoName(item.team) }}"></div>
+      </div>
+      <div class="score">
+        {{ item.score }}
       </div>
     </div>
   </ng-container>

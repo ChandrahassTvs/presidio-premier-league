@@ -7,7 +7,9 @@ import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { environment } from '../environments/environment';
 import { Match, matchAttributesMapping } from './match.model';
 import groupBy from 'lodash/groupBy';
+import orderBy from 'lodash/orderBy';
 import { Team, teamAttributesMapping } from './team.model';
+import { Score, scoreAttributesMapping } from './score.model';
 
 @Component({
   selector: 'app-root',
@@ -17,16 +19,19 @@ import { Team, teamAttributesMapping } from './team.model';
 export class AppComponent implements OnInit {
   matches$: Observable<Match[]>;
   teams$: Observable<Team[]>;
+  scores$: Observable<Score[]>;
   fixturesGroupedByDates: any;
   resultsGroupedByDates: any;
-  currentView: string = 'teams';
+  currentView: string = 'standings';
   playersGroupedByTeams: any;
+  teamScores: Score[] = [];
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService) {}
 
   ngOnInit(): void {
     this.getMatches();
     this.getTeams();
+    this.getScores();
   }
 
   getMatches() {
@@ -56,7 +61,19 @@ export class AppComponent implements OnInit {
 
     this.teams$.subscribe((response) => {
       this.playersGroupedByTeams = groupBy(response, 'team');
-      console.log(this.playersGroupedByTeams);
+    });
+  }
+
+  getScores() {
+    this.scores$ = this.googleSheetsDbService.get<Score>(
+      environment.scores.spreadsheetId,
+      environment.scores.worksheetName,
+      scoreAttributesMapping
+    );
+
+    this.scores$.subscribe((response) => {
+      response = orderBy(response, 'score', 'desc');
+      this.teamScores = response;
     });
   }
 
@@ -68,7 +85,7 @@ export class AppComponent implements OnInit {
         return 'water-tribe';
       case 'Earth Kingdom':
         return 'earth-kingdom';
-      case 'Air Nomad':
+      case 'Air Nomads':
         return 'air-nomad';
     }
   }

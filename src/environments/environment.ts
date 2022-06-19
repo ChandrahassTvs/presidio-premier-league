@@ -13,6 +13,10 @@ export const environment = {
     spreadsheetId: '1RrXH6xxEJtB0luD_EwdCKnlN2Hkn3WpVESbs2AKkEIE',
     worksheetName: 'Team',
   },
+  scores: {
+    spreadsheetId: '1RrXH6xxEJtB0luD_EwdCKnlN2Hkn3WpVESbs2AKkEIE',
+    worksheetName: 'Totals',
+  },
 };
 
 /*

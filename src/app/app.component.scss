@@ -33,7 +33,7 @@ $primaryColor: #811333;
 }
 
 .logo {
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   margin: 8px;
   background-size: 50px;
@@ -111,12 +111,19 @@ $primaryColor: #811333;
   }
 
   .players {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    line-height: 1.5;
+    line-height: 1.4;
     margin: 0 16px;
+    .player {
+      margin-bottom: 10px;
+      text-align: right;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .fixture {
@@ -147,6 +154,9 @@ $primaryColor: #811333;
 
   .team-two {
     justify-content: flex-start;
+    .players {
+      text-align: left;
+    }
   }
 
   .team-one .players {
@@ -176,7 +186,42 @@ $primaryColor: #811333;
       line-height: 1.4;
       .player {
         margin-bottom: 10px;
+        .player-name {
+          position: relative;
+        }
+        .icon {
+          font-size: 20px;
+          margin-right: 8px;
+          position: absolute;
+          left: -30px;
+          top: -4px;
+        }
       }
+    }
+  }
+}
+
+.standings {
+  .team {
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    margin: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    .name {
+      flex: 1;
+    }
+    .score {
+      width: 100px;
+      background: #0000007a;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .icon-large {
+      margin-bottom: 0;
     }
   }
 }
