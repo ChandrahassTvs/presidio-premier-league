@@ -90,7 +90,7 @@ $primaryColor: #811333;
   text-align: center;
   color: white;
   .match {
-    width: 320px;
+    width: 340px;
     margin: 10px 0;
     border-radius: 10px;
     padding: 16px 0;
@@ -98,6 +98,7 @@ $primaryColor: #811333;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     border-top: 30px solid #0000007a;
+    position: relative;
     .game {
       position: absolute;
       top: -22px;
@@ -138,7 +139,7 @@ $primaryColor: #811333;
 
   .vs {
     margin: 0 16px;
-    font-size: 16px;
+    font-size: 14px;
     width: 10%;
     .won {
       font-weight: 600;
@@ -282,6 +283,9 @@ $primaryColor: #811333;
 @media (min-width: 768px) {
   .teams {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .vs {
+    font-size: 16px;
   }
   .matches {
     .match {
