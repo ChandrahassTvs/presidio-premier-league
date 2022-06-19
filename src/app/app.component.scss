@@ -30,9 +30,11 @@ $primaryColor: #811333;
       text-align: center;
       width: 100px;
       cursor: pointer;
+      &:hover {
+        background-color: rgba($primaryColor, .2);
+      }
       &.active {
         background-color: rgba($primaryColor, 1);
-        color: white;
       }
     }
   }
