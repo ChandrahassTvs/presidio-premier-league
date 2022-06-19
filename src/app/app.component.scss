@@ -27,6 +27,7 @@ $primaryColor: #811333;
       border-radius: 16px;
       font-weight: 400;
       text-align: center;
+      width: 100px;
       cursor: pointer;
       &.active {
         background-color: rgba($primaryColor, 1);
