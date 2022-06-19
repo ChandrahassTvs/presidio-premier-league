@@ -5,8 +5,6 @@
   "author": {
     "name": "Chandrahass Tvs"
   },
-  "predeploy": "npm run build",
-"deploy": "gh-pages -d build",
   "dependencies": {
     "@angular/animations": "^10.2.4",
     "@angular/common": "^10.2.4",
@@ -28,7 +26,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.1",
