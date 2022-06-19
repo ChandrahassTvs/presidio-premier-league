@@ -10,6 +10,7 @@ $primaryColor: #811333;
     margin-bottom: 36px;
     .title {
       font-size: 36px;
+      margin-bottom: 24px;
     }
   }
   .menu-list {
@@ -245,7 +246,7 @@ $primaryColor: #811333;
 
 .loader-wrapper {
   position: absolute;
-  top: 300px;
+  top: 360px;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
