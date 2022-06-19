@@ -8,28 +8,28 @@
       <div
         class="menu-item"
         [class.active]="currentView == 'fixtures'"
-        (click)="currentView = 'fixtures'"
+        (click)="switchTab('fixtures')"
       >
         Fixtures
       </div>
       <div
         class="menu-item"
         [class.active]="currentView == 'results'"
-        (click)="currentView = 'results'"
+        (click)="switchTab('results')"
       >
         Results
       </div>
       <div
         class="menu-item"
         [class.active]="currentView == 'standings'"
-        (click)="currentView = 'standings'"
+        (click)="switchTab('standings')"
       >
         Standings
       </div>
       <div
         class="menu-item"
         [class.active]="currentView == 'teams'"
-        (click)="currentView = 'teams'"
+        (click)="switchTab('teams')"
       >
         Teams
       </div>
@@ -137,4 +137,8 @@
       </div>
     </div>
   </ng-container>
+</div>
+
+<div class="loader-wrapper">
+  <div class="loader" *ngIf="loading"></div>
 </div>

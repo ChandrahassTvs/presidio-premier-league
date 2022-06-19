@@ -25,56 +25,67 @@ export class AppComponent implements OnInit {
   currentView: string = 'standings';
   playersGroupedByTeams: any;
   teamScores: Score[] = [];
+  loading: boolean;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService) {}
 
   ngOnInit(): void {
-    this.getMatches();
-    this.getTeams();
-    this.getScores();
+    this.switchTab(this.currentView);
   }
 
   getMatches() {
-    this.matches$ = this.googleSheetsDbService.get<Match>(
-      environment.matches.spreadsheetId,
-      environment.matches.worksheetName,
-      matchAttributesMapping
-    );
-    this.matches$.subscribe((response) => {
-      this.fixturesGroupedByDates = groupBy(
-        response.filter((a) => a.status != 'Completed'),
-        'date'
+    if (!this.fixturesGroupedByDates && !this.resultsGroupedByDates) {
+      this.loading = true;
+      this.matches$ = this.googleSheetsDbService.get<Match>(
+        environment.matches.spreadsheetId,
+        environment.matches.worksheetName,
+        matchAttributesMapping
       );
-      this.resultsGroupedByDates = groupBy(
-        response.filter((a) => a.status == 'Completed'),
-        'date'
-      );
-    });
+      this.matches$.subscribe((response) => {
+        this.fixturesGroupedByDates = groupBy(
+          response.filter((a) => a.status != 'Completed'),
+          'date'
+        );
+        this.resultsGroupedByDates = groupBy(
+          response.filter((a) => a.status == 'Completed'),
+          'date'
+        );
+        this.loading = false;
+      });
+    }
   }
 
   getTeams() {
-    this.teams$ = this.googleSheetsDbService.get<Team>(
-      environment.teams.spreadsheetId,
-      environment.teams.worksheetName,
-      teamAttributesMapping
-    );
+    if (!this.playersGroupedByTeams) {
+      this.loading = true;
+      this.teams$ = this.googleSheetsDbService.get<Team>(
+        environment.teams.spreadsheetId,
+        environment.teams.worksheetName,
+        teamAttributesMapping
+      );
 
-    this.teams$.subscribe((response) => {
-      this.playersGroupedByTeams = groupBy(response, 'team');
-    });
+      this.teams$.subscribe((response) => {
+        this.playersGroupedByTeams = groupBy(response, 'team');
+        this.loading = false;
+      });
+    }
   }
 
   getScores() {
-    this.scores$ = this.googleSheetsDbService.get<Score>(
-      environment.scores.spreadsheetId,
-      environment.scores.worksheetName,
-      scoreAttributesMapping
-    );
+    if (!this.teamScores.length) {
+      this.loading = true;
+      this.scores$ = this.googleSheetsDbService.get<Score>(
+        environment.scores.spreadsheetId,
+        environment.scores.worksheetName,
+        scoreAttributesMapping
+      );
 
-    this.scores$.subscribe((response) => {
-      response = orderBy(response, 'score', 'desc');
-      this.teamScores = response;
-    });
+      this.scores$.subscribe((response) => {
+        response = orderBy(response, 'score', 'desc');
+        this.teamScores = response;
+        this.loading = false;
+      });
+    }
   }
 
   getLogoName(name) {
@@ -87,6 +98,24 @@ export class AppComponent implements OnInit {
         return 'earth-kingdom';
       case 'Air Nomads':
         return 'air-nomad';
+    }
+  }
+
+  switchTab(tab) {
+    this.currentView = tab;
+    switch (tab) {
+      case 'results':
+        this.getMatches();
+        break;
+      case 'fixtures':
+        this.getMatches();
+        break;
+      case 'teams':
+        this.getTeams();
+        break;
+      case 'standings':
+        this.getScores();
+        break;
     }
   }
 }
