@@ -24,10 +24,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "gh-build": "ng build --output-path docs --base-href https://chandrahasstvs.github.io/presidio-premier-league/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "predeploy": "npm run build",
+    "predeploy": "npm run gh-build",
     "deploy": "gh-pages -d dist/presidio-premier-league"
   },
   "devDependencies": {
