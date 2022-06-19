@@ -7,7 +7,11 @@ export const environment = {
   googleSheetsApiKey: 'AIzaSyDU-N2P62-nfvbTpapNKxgHizZ2U5qaSXw',
   matches: {
     spreadsheetId: '1RrXH6xxEJtB0luD_EwdCKnlN2Hkn3WpVESbs2AKkEIE',
-    worksheetName: 'Sample',
+    worksheetName: 'Fixtures',
+  },
+  teams: {
+    spreadsheetId: '1RrXH6xxEJtB0luD_EwdCKnlN2Hkn3WpVESbs2AKkEIE',
+    worksheetName: 'Team',
   },
 };
 

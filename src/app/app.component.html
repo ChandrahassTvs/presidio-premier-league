@@ -21,6 +21,13 @@
       </div>
       <div
         class="menu-item"
+        [class.active]="currentView == 'standings'"
+        (click)="currentView = 'standings'"
+      >
+        Standings
+      </div>
+      <div
+        class="menu-item"
         [class.active]="currentView == 'teams'"
         (click)="currentView = 'teams'"
       >
@@ -101,8 +108,15 @@
   </ng-container>
 </div>
 
-<div class="teams">
-  <div class="team">
-    <div class="name"></div>
-  </div>
+<div class="teams" *ngIf="currentView === 'teams'">
+  <ng-container *ngFor="let group of playersGroupedByTeams | keyvalue">
+    <div class="team">
+      <div class="name">
+        <div class="logo-large {{ getLogoName(group.key) }}"></div>
+      </div>
+      <div class="players">
+        <div class="player" *ngFor="let player of group.value">{{ player.name }}</div>
+      </div>
+    </div>
+  </ng-container>
 </div>

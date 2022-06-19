@@ -38,7 +38,7 @@ $primaryColor: #811333;
   margin: 8px;
   background-size: 50px;
   &.water-tribe {
-    background-image: url('../assets/Water.png');
+    background-image: url('../assets/WaterT.png');
   }
   &.air-nomad {
     background-image: url('../assets/Air.png');
@@ -48,6 +48,28 @@ $primaryColor: #811333;
   }
   &.earth-kingdom {
     background-image: url('../assets/Land.png');
+  }
+}
+
+.logo-large {
+  width: auto;
+  height: 80px;
+  margin-bottom: 16px;
+  background-size: auto 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.water-tribe {
+    background-image: url('../assets/WaterTribe.png');
+  }
+  &.air-nomad {
+    background-image: url('../assets/AirNomad.png');
+  }
+  &.fire-nation {
+    background-image: url('../assets/FireNation.png');
+  }
+  &.earth-kingdom {
+    background-image: url('../assets/EarthKingdom.png');
   }
 }
 
@@ -130,4 +152,60 @@ $primaryColor: #811333;
   .team-one .players {
     align-items: flex-end;
   }
+}
+
+.teams {
+  display: grid;
+  padding: 24px 0;
+  .team {
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    margin: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 10px;
+    .name {
+      background: #0000007a;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .players {
+      color: white;
+      padding: 0 16px;
+      line-height: 1.4;
+      .player {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .teams {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .teams {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .teams {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
 }
