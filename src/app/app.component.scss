@@ -11,6 +11,7 @@ $primaryColor: #811333;
     .title {
       font-size: 36px;
       margin-bottom: 24px;
+      margin-top: 16px;
     }
   }
   .menu-list {
@@ -140,9 +141,9 @@ $primaryColor: #811333;
   }
 
   .vs {
-    margin: 0 16px;
+    margin: 0 8px;
     font-size: 14px;
-    width: 10%;
+    width: 8%;
     .won {
       font-weight: 600;
     }
@@ -287,6 +288,8 @@ $primaryColor: #811333;
     grid-template-columns: repeat(3, 1fr);
   }
   .vs {
+    width: 10%;
+    margin: 0 16px;
     font-size: 16px;
   }
   .matches {
