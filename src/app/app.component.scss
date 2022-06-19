@@ -13,16 +13,19 @@ $primaryColor: #811333;
     }
   }
   .menu-list {
-    display: flex;
-    justify-content: center;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
     .menu-item {
+      border: 1px solid #ffffff2b;
       padding: 10px 16px;
       background-color: transparent;
       color: white;
       display: inline-block;
-      margin: 0 8px;
+      margin: 8px;
       border-radius: 16px;
       font-weight: 400;
+      text-align: center;
       cursor: pointer;
       &.active {
         background-color: rgba($primaryColor, 1);
@@ -37,6 +40,7 @@ $primaryColor: #811333;
   height: 50px;
   margin: 8px;
   background-size: 50px;
+  display: none;
   &.water-tribe {
     background-image: url('../assets/WaterT.png');
   }
@@ -86,7 +90,7 @@ $primaryColor: #811333;
   text-align: center;
   color: white;
   .match {
-    width: 600px;
+    width: 320px;
     margin: 10px 0;
     border-radius: 10px;
     padding: 16px 0;
@@ -251,7 +255,7 @@ $primaryColor: #811333;
   height: 48px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 3px solid #FFF;
+  border-top: 3px solid #fff;
   border-right: 3px solid transparent;
   box-sizing: border-box;
   transform: translate(-50%);
@@ -265,7 +269,7 @@ $primaryColor: #811333;
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
@@ -278,6 +282,14 @@ $primaryColor: #811333;
 @media (min-width: 768px) {
   .teams {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .matches {
+    .match {
+      width: 600px;
+    }
+    .logo {
+      display: block;
+    }
   }
 }
 
