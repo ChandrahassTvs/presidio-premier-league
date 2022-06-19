@@ -60,12 +60,12 @@
       var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true); // Module
 
 
-      ___CSS_LOADER_EXPORT___.push([module.i, "body {\n  font-family: \"Kdam Thmor Pro\", sans-serif;\n  height: 100vh;\n  width: 100%;\n  background-image: url('stadium1.jpeg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-origin: initial;\n  overflow: scroll;\n}", "", {
+      ___CSS_LOADER_EXPORT___.push([module.i, "body {\n  font-family: \"Kdam Thmor Pro\", sans-serif;\n  height: 100vh;\n  width: 100%;\n  background-image: url('stadium1.jpeg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-origin: initial;\n}", "", {
         "version": 3,
         "sources": ["webpack://src/styles.scss"],
         "names": [],
-        "mappings": "AAAA;EACE,yCAAA;EAEA,aAAA;EACA,WAAA;EACA,sCAAA;EACA,sBAAA;EACA,4BAAA;EACA,0BAAA;EACA,gBAAA;AAAF",
-        "sourcesContent": ["body {\n  font-family: 'Kdam Thmor Pro', sans-serif;\n  // background-color: #c8b49b;\n  height: 100vh;\n  width: 100%;\n  background-image: url('./assets/stadium1.jpeg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-origin: initial;\n  overflow: scroll;\n}\n"],
+        "mappings": "AAAA;EACE,yCAAA;EACA,aAAA;EACA,WAAA;EACA,sCAAA;EACA,sBAAA;EACA,4BAAA;EACA,0BAAA;AACF",
+        "sourcesContent": ["body {\n  font-family: 'Kdam Thmor Pro', sans-serif;\n  height: 100vh;\n  width: 100%;\n  background-image: url('./assets/stadium1.jpeg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-origin: initial;\n}\n"],
         "sourceRoot": ""
       }]); // Exports
 
