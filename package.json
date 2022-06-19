@@ -29,7 +29,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "npm run gh-build",
-    "deploy": "gh-pages -d dist/presidio-premier-league"
+    "deploy": "gh-pages -d docs"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.1",
