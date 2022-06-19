@@ -31,7 +31,7 @@ $primaryColor: #811333;
       width: 100px;
       cursor: pointer;
       &:hover {
-        background-color: rgba($primaryColor, .2);
+        background-color: rgba($primaryColor, 0.2);
       }
       &.active {
         background-color: rgba($primaryColor, 1);
