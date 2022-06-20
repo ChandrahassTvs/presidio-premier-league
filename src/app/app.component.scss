@@ -274,6 +274,9 @@ $primaryColor: #811333;
 
 .live {
   text-align: center;
+  .video-player {
+    width: 75%;
+  }
 }
 
 @keyframes rotation {

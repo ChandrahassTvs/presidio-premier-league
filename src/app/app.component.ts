@@ -11,13 +11,13 @@ import orderBy from 'lodash/orderBy';
 import { Team, teamAttributesMapping } from './team.model';
 import { Score, scoreAttributesMapping } from './score.model';
 
-let IVSPlayer;
+declare var IVSPlayer;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   matches$: Observable<Match[]>;
   teams$: Observable<Team[]>;
   scores$: Observable<Score[]>;
@@ -32,10 +32,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.switchTab(this.currentView);
-  }
-
-  ngAfterViewInit() {
-    this.setupLive();
   }
 
   getMatches() {
@@ -122,15 +118,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.getScores();
         break;
       case 'live':
-        // this.setupLive();
+        this.setupLive();
         break;
     }
   }
 
   setupLive() {
-    console.log(IVSPlayer);
     if (IVSPlayer.isPlayerSupported) {
-      console.log('hey');
       const player = IVSPlayer.create();
       player.attachHTMLVideoElement(document.getElementById('video-player'));
       player.load(
