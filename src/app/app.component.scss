@@ -165,12 +165,16 @@ $primaryColor: #811333;
   .team-two {
     justify-content: flex-start;
     .players {
+      margin-right: 24px;
+    }
+    .player {
       text-align: left;
     }
   }
 
   .team-one .players {
     align-items: flex-end;
+    margin-left: 24px;
   }
 }
 
