@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   scores$: Observable<Score[]>;
   fixturesGroupedByDates: any;
   resultsGroupedByDates: any;
-  currentView: string = 'fixtures';
+  currentView: string = 'live';
   playersGroupedByTeams: any;
   teamScores: Score[] = [];
   loading: boolean;

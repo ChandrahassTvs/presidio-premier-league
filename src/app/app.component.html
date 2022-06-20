@@ -7,6 +7,13 @@
     <div class="menu-list">
       <div
         class="menu-item"
+        [class.active]="currentView == 'live'"
+        (click)="switchTab('live')"
+      >
+        Live
+      </div>
+      <div
+        class="menu-item"
         [class.active]="currentView == 'fixtures'"
         (click)="switchTab('fixtures')"
       >
@@ -141,4 +148,17 @@
 
 <div class="loader-wrapper">
   <div class="loader" *ngIf="loading"></div>
+</div>
+
+<div class="live" *ngIf="currentView === 'live'">
+  <script src="https://player.live-video.net/1.10.0/amazon-ivs-player.min.js"></script>
+  <video id="video-player" playsinline></video>
+  <script>
+    if (IVSPlayer.isPlayerSupported) {
+      const player = IVSPlayer.create();
+      player.attachHTMLVideoElement(document.getElementById('video-player'));
+      player.load("https://f5e4202d78fc.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.574829994450.channel.ZEBY7ylO0g8u.m3u8");
+      player.play();
+    }
+  </script>
 </div>

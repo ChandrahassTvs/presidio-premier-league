@@ -272,6 +272,10 @@ $primaryColor: #811333;
   animation: rotation 1s linear infinite;
 }
 
+.live {
+  text-align: center;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
