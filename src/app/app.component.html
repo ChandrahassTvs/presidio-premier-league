@@ -151,14 +151,8 @@
 </div>
 
 <div class="live" *ngIf="currentView === 'live'">
-  <script src="https://player.live-video.net/1.10.0/amazon-ivs-player.min.js"></script>
   <video id="video-player" playsinline></video>
   <script>
-    if (IVSPlayer.isPlayerSupported) {
-      const player = IVSPlayer.create();
-      player.attachHTMLVideoElement(document.getElementById('video-player'));
-      player.load("https://f5e4202d78fc.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.574829994450.channel.ZEBY7ylO0g8u.m3u8");
-      player.play();
-    }
+    console.log(IVSPlayer.isPlayerSupported)
   </script>
 </div>

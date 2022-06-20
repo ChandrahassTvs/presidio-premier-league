@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 
@@ -11,12 +11,13 @@ import orderBy from 'lodash/orderBy';
 import { Team, teamAttributesMapping } from './team.model';
 import { Score, scoreAttributesMapping } from './score.model';
 
+let IVSPlayer;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   matches$: Observable<Match[]>;
   teams$: Observable<Team[]>;
   scores$: Observable<Score[]>;
@@ -31,6 +32,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.switchTab(this.currentView);
+  }
+
+  ngAfterViewInit() {
+    this.setupLive();
   }
 
   getMatches() {
@@ -116,6 +121,22 @@ export class AppComponent implements OnInit {
       case 'standings':
         this.getScores();
         break;
+      case 'live':
+        // this.setupLive();
+        break;
+    }
+  }
+
+  setupLive() {
+    console.log(IVSPlayer);
+    if (IVSPlayer.isPlayerSupported) {
+      console.log('hey');
+      const player = IVSPlayer.create();
+      player.attachHTMLVideoElement(document.getElementById('video-player'));
+      player.load(
+        'https://f5e4202d78fc.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.574829994450.channel.ZEBY7ylO0g8u.m3u8'
+      );
+      player.play();
     }
   }
 }
