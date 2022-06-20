@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 
@@ -17,7 +17,7 @@ declare var IVSPlayer;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   matches$: Observable<Match[]>;
   teams$: Observable<Team[]>;
   scores$: Observable<Score[]>;
@@ -27,10 +27,11 @@ export class AppComponent implements OnInit {
   playersGroupedByTeams: any;
   teamScores: Score[] = [];
   loading: boolean;
+  player: any;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.switchTab(this.currentView);
   }
 
@@ -104,6 +105,9 @@ export class AppComponent implements OnInit {
 
   switchTab(tab) {
     this.currentView = tab;
+    if (this.player) {
+      this.player.delete();
+    }
     switch (tab) {
       case 'results':
         this.getMatches();
@@ -124,13 +128,17 @@ export class AppComponent implements OnInit {
   }
 
   setupLive() {
-    if (IVSPlayer.isPlayerSupported) {
-      const player = IVSPlayer.create();
-      player.attachHTMLVideoElement(document.getElementById('video-player'));
-      player.load(
-        'https://f5e4202d78fc.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.574829994450.channel.ZEBY7ylO0g8u.m3u8'
-      );
-      player.play();
-    }
+    setTimeout(() => {
+      if (IVSPlayer.isPlayerSupported) {
+        this.player = IVSPlayer.create();
+        this.player.attachHTMLVideoElement(
+          document.getElementById('video-player')
+        );
+        this.player.load(
+          'https://f5e4202d78fc.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.574829994450.channel.ZEBY7ylO0g8u.m3u8'
+        );
+        this.player.play();
+      }
+    });
   }
 }
