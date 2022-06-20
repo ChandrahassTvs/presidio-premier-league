@@ -21,6 +21,7 @@ $primaryColor: #811333;
     display: inline-block;
     text-align: center;
     width: 100%;
+    z-index: 1;
     .menu-item {
       border: 1px solid #ffffff2b;
       padding: 10px 16px;
@@ -257,7 +258,7 @@ $primaryColor: #811333;
 
 .loader-wrapper {
   position: absolute;
-  top: 360px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
